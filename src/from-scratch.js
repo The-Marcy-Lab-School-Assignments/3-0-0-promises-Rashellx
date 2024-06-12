@@ -6,10 +6,18 @@ const resolvedWrapper = (value) => {
   return promise
 };
 
-const rejectedWrapper = () => {
+const rejectedWrapper = (value) => {
+  const promise = new Promise((resolve, reject) => {
+    reject(new Error(value))
+  })
+  return promise
 };
 
-const handleResolvedPromise = () => {
+const handleResolvedPromise = (promise) => {
+  return promise.then((value) => {
+    console.log(value)
+    return value
+  })
 };
 
 const handleResolvedOrRejectedPromise = () => {
